@@ -1,7 +1,7 @@
 {
-  "name": "codebyte.re",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "codebytere's personal website",
+  "description": "Susanou personal portfolio website",
   "main": "js/cli.js",
   "scripts": {
     "dev": "http-server -o",
@@ -15,7 +15,7 @@
   "author": "Cameron Hochberg",
   "homepage": "https://github.com/Susanou/portfolio#readme",
   "devDependencies": {
-    "http-server": "^0.12.1",
-    "prettier": "^2.0.2"
+    "http-server": "^0.12.3",
+    "prettier": "^2.0.5"
   }
 }
