@@ -15,7 +15,7 @@ const struct = {
 
 const commands = {};
 let systemData = {};
-const rootPath = "users/codebytere/root";
+const rootPath = "users/Susanou/root";
 
 const getDirectory = () => localStorage.directory;
 const setDirectory = (dir) => {
@@ -120,6 +120,7 @@ $(() => {
   pages.push($.get("pages/skills.html"));
   pages.push($.get("pages/talks.html"));
   pages.push($.get("pages/jobs.html"));
+  console.log("I exist");
   $.when
     .apply($, pages)
     .done(
