@@ -9,7 +9,8 @@ const errors = {
 
 const struct = {
   root: ["about", "resume", "contact", "talks"],
-  skills: ["proficient", "familiar"],
+  skills: ["programming", "languages"],
+  jobs: ["H2R", "ArmatureTech", "GroupeHN"],
 };
 
 const commands = {};
@@ -111,22 +112,23 @@ $(() => {
   const pages = [];
   pages.push($.get("pages/about.html"));
   pages.push($.get("pages/contact.html"));
-  pages.push($.get("pages/familiar.html"));
+  pages.push($.get("pages/languages.html"));
   pages.push($.get("pages/help.html"));
-  pages.push($.get("pages/proficient.html"));
+  pages.push($.get("pages/programming.html"));
   pages.push($.get("pages/resume.html"));
   pages.push($.get("pages/root.html"));
   pages.push($.get("pages/skills.html"));
   pages.push($.get("pages/talks.html"));
+  pages.push($.get("pages/jobs.html"));
   $.when
     .apply($, pages)
     .done(
       (
         aboutData,
         contactData,
-        familiarData,
+        languagesData,
         helpData,
-        proficientData,
+        programmingData,
         resumeData,
         rootData,
         skillsData,
@@ -134,9 +136,9 @@ $(() => {
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
-        systemData["familiar"] = familiarData[0];
+        systemData["languages"] = languagesData[0];
         systemData["help"] = helpData[0];
-        systemData["proficient"] = proficientData[0];
+        systemData["programming"] = programmingData[0];
         systemData["resume"] = resumeData[0];
         systemData["root"] = rootData[0];
         systemData["skills"] = skillsData[0];
