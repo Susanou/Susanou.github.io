@@ -142,7 +142,7 @@ $(() => {
         systemData["resume"] = resumeData[0];
         systemData["root"] = rootData[0];
         systemData["skills"] = skillsData[0];
-        systemData["jobs"] = jobsData[0];      
+        systemData["jobs"] = jobsData[0];
       }
     );
 
