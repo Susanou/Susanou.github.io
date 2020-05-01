@@ -8,7 +8,7 @@ const errors = {
 };
 
 const struct = {
-  root: ["about", "resume", "contact", "talks"],
+  root: ["about", "resume", "contact"],
   skills: ["programming", "languages"],
   jobs: ["H2R", "ArmatureTech", "GroupeHN"],
 };
@@ -118,7 +118,6 @@ $(() => {
   pages.push($.get("pages/resume.html"));
   pages.push($.get("pages/root.html"));
   pages.push($.get("pages/skills.html"));
-  pages.push($.get("pages/talks.html"));
   pages.push($.get("pages/jobs.html"));
   console.log("I exist");
   $.when
@@ -133,7 +132,7 @@ $(() => {
         resumeData,
         rootData,
         skillsData,
-        talksData
+        jobsData
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
@@ -143,7 +142,7 @@ $(() => {
         systemData["resume"] = resumeData[0];
         systemData["root"] = rootData[0];
         systemData["skills"] = skillsData[0];
-        systemData["talks"] = talksData[0];
+        systemData["jobs"] = jobsData[0];      
       }
     );
 
