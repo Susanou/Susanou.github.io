@@ -6,18 +6,18 @@ class Shell {
     this.setupListeners(term);
     this.term = term;
 
-    localStorage.directory = 'root';
-    localStorage.history = JSON.stringify('');
+    localStorage.directory = "root";
+    localStorage.history = JSON.stringify("");
     localStorage.historyIndex = -1;
     localStorage.inHistory = false;
 
-    $('.input').focus();
+    $(".input").focus();
   }
 
   setupListeners(term) {
-    $('#terminal').mouseup(() => $('.input').last().focus());
+    $("#terminal").mouseup(() => $(".input").last().focus());
 
-    term.addEventListener('keyup', (evt) => {
+    term.addEventListener("keyup", (evt) => {
       const keyUp = 38;
       const keyDown = 40;
       const key = evt.keyCode;
@@ -32,37 +32,50 @@ class Shell {
               localStorage.inHistory = true;
             } else {
               // Prevent repetition of last command while traversing history.
-              if (localStorage.historyIndex === history.length - 1 && history.length !== 1) {
+              if (
+                localStorage.historyIndex === history.length - 1 &&
+                history.length !== 1
+              ) {
                 localStorage.historyIndex -= 1;
               }
             }
           }
 
-          $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
+          $(".input")
+            .last()
+            .html(
+              `${history[localStorage.historyIndex]}<span class="end"><span>`
+            );
           if (localStorage.historyIndex !== 0) localStorage.historyIndex -= 1;
         } else if (key === keyDown) {
-          if (localStorage.inHistory && localStorage.historyIndex < history.length) {
+          if (
+            localStorage.inHistory &&
+            localStorage.historyIndex < history.length
+          ) {
             let ret;
 
             if (localStorage.historyIndex > 0) {
-              ret = `${history[localStorage.historyIndex]}<span class="end"><span>`;
+              ret = `${
+                history[localStorage.historyIndex]
+              }<span class="end"><span>`;
               if (localStorage.historyIndex !== history.length - 1) {
-                localStorage.historyIndex = Number(localStorage.historyIndex) + 1;
+                localStorage.historyIndex =
+                  Number(localStorage.historyIndex) + 1;
               }
               // Prevent repetition of first command while traversing history.
             } else if (localStorage.historyIndex === 0 && history.length > 1) {
               ret = `${history[1]}<span class="end"><span>`;
               localStorage.historyIndex = history.length !== 2 ? 2 : 1;
             }
-            $('.input').last().html(ret);
+            $(".input").last().html(ret);
           }
         }
         evt.preventDefault();
-        $('.end').focus();
+        $(".end").focus();
       }
     });
 
-    term.addEventListener('keydown', (evt) => {
+    term.addEventListener("keydown", (evt) => {
       // Keydown legend:
       // 9 -> Tab key.
       // 27 -> Escape key.
@@ -72,13 +85,13 @@ class Shell {
       if (evt.keyCode === 9) {
         evt.preventDefault();
       } else if (evt.keyCode === 27) {
-        $('.terminal-window').toggleClass('fullscreen');
+        $(".terminal-window").toggleClass("fullscreen");
       } else if (evt.keyCode === 8 || evt.keyCode === 46) {
         this.resetHistoryIndex();
       }
     });
 
-    term.addEventListener('keypress', (evt) => {
+    term.addEventListener("keypress", (evt) => {
       // Exclude these keys for Firefox, as they're fired for arrow/tab keypresses.
       if (![9, 27, 37, 38, 39, 40].includes(evt.keyCode)) {
         // If input keys are pressed then resetHistoryIndex() is called.
@@ -86,18 +99,18 @@ class Shell {
       }
       if (evt.keyCode === 13) {
         const prompt = evt.target;
-        const input = prompt.textContent.trim().split(' ');
+        const input = prompt.textContent.trim().split(" ");
         const cmd = input[0].toLowerCase();
         const args = input[1];
 
-        if (cmd === 'clear') {
+        if (cmd === "clear") {
           this.clearConsole();
         } else if (cmd && cmd in this.commands) {
           this.runCommand(cmd, args);
           this.resetPrompt(term, prompt);
-          $('.root').last().html(localStorage.directory);
+          $(".root").last().html(localStorage.directory);
         } else {
-          this.term.innerHTML += 'Error: command not recognized';
+          this.term.innerHTML += "Error: command not recognized";
           this.resetPrompt(term, prompt);
         }
         evt.preventDefault();
@@ -117,15 +130,15 @@ class Shell {
 
   resetPrompt(term, prompt) {
     const newPrompt = prompt.parentNode.cloneNode(true);
-    prompt.setAttribute('contenteditable', false);
+    prompt.setAttribute("contenteditable", false);
 
     if (this.prompt) {
-      newPrompt.querySelector('.prompt').textContent = this.prompt;
+      newPrompt.querySelector(".prompt").textContent = this.prompt;
     }
 
     term.appendChild(newPrompt);
-    newPrompt.querySelector('.input').innerHTML = '';
-    newPrompt.querySelector('.input').focus();
+    newPrompt.querySelector(".input").innerHTML = "";
+    newPrompt.querySelector(".input").focus();
   }
 
   resetHistoryIndex() {
@@ -139,7 +152,8 @@ class Shell {
     if (history.length == 0) {
       localStorage.historyIndex = -1;
     } else {
-      localStorage.historyIndex = history.length - 1 > 0 ? history.length - 1 : 0;
+      localStorage.historyIndex =
+        history.length - 1 > 0 ? history.length - 1 : 0;
     }
   }
 
@@ -156,16 +170,16 @@ class Shell {
     const getDirectory = () => localStorage.directory;
     const dir = getDirectory();
 
-    $('#terminal').html(
+    $("#terminal").html(
       `<p class="hidden">
           <span class="prompt">
             <span class="root">${dir}</span>
             <span class="tick">$</span>
           </span>
           <span contenteditable="true" class="input"></span>
-        </p>`,
+        </p>`
     );
 
-    $('.input').focus();
+    $(".input").focus();
   }
 }
