@@ -119,6 +119,8 @@ $(() => {
   pages.push($.get("pages/root.html"));
   pages.push($.get("pages/skills.html"));
   pages.push($.get("pages/projects.html"));
+  pages.push($.get("/pages/CTFStuff.html"));
+  pages.push($.get("/pages/ButterEmUp.html"));
   console.log("I exist");
   $.when
     .apply($, pages)
@@ -132,7 +134,9 @@ $(() => {
         resumeData,
         rootData,
         skillsData,
-        projectData
+        projectData,
+        ctfData,
+        butterData,
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
@@ -143,6 +147,8 @@ $(() => {
         systemData["root"] = rootData[0];
         systemData["skills"] = skillsData[0];
         systemData["projects"] = projectData[0];
+        systemData["CTFStuff"] = ctfData[0];
+        systemData["ButterEmUp"] = butterData[0];
       }
     );
 
