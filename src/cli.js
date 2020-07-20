@@ -136,7 +136,7 @@ $(() => {
         skillsData,
         projectData,
         ctfData,
-        butterData,
+        butterData
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
