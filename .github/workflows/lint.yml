@@ -13,8 +13,8 @@ jobs:
         node-version: 12.x
     - name: Format
       run: |
-      npm ci
-      npm run format
+        npm ci
+        npm run format
     - name: Lint
       run: |
         npm ci
