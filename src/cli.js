@@ -121,7 +121,7 @@ $(() => {
   pages.push($.get("pages/projects.html"));
   pages.push($.get("/pages/Writeups.html"));
   pages.push($.get("/pages/ButterEmUp.html"));
-  pages.push($.get("/pages/EscapeTheForest.html"))
+  pages.push($.get("/pages/EscapeTheForest.html"));
   console.log("I exist");
   $.when
     .apply($, pages)
@@ -138,7 +138,7 @@ $(() => {
         projectData,
         WriteupsData,
         ButterEmUpData,
-        EnchantedForestData,
+        EnchantedForestData
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
