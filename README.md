@@ -1,7 +1,7 @@
 # Susanou.github.io
 Github pages
 
-portfolio available at the following address susanou.github.io
+Portfolio available at the following address susanou.github.io
 
 ## TODO
 Implement tab auto complete when only one solution or list all possible solutions otherwise
