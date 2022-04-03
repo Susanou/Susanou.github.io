@@ -10,7 +10,7 @@ const errors = {
 const struct = {
   root: ["about", "resume", "contact"],
   skills: ["programming", "languages"],
-  projects: ["ButterEmUp", "EnchantedForest", "Writeups"],
+  projects: ["GameDev", "Writeups"],
 };
 
 const commands = {};
@@ -122,6 +122,7 @@ $(() => {
   pages.push($.get("/pages/Writeups.html"));
   pages.push($.get("/pages/ButterEmUp.html"));
   pages.push($.get("/pages/EscapeTheForest.html"));
+  pages.push($.get("/pages/GameDev.html"))
   console.log("I exist");
   $.when
     .apply($, pages)
@@ -138,7 +139,8 @@ $(() => {
         projectData,
         WriteupsData,
         ButterEmUpData,
-        EnchantedForestData
+        EnchantedForestData,
+        GameDev,
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
@@ -152,6 +154,7 @@ $(() => {
         systemData["Writeups"] = WriteupsData[0];
         systemData["ButterEmUp"] = ButterEmUpData[0];
         systemData["EnchantedForest"] = EnchantedForestData[0];
+        systemData["GameDev"] = GameDev[0];
       }
     );
 
