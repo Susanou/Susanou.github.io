@@ -122,7 +122,9 @@ $(() => {
   pages.push($.get("/pages/Writeups.html"));
   pages.push($.get("/pages/ButterEmUp.html"));
   pages.push($.get("/pages/EscapeTheForest.html"));
-  pages.push($.get("/pages/GameDev.html"))
+  pages.push($.get("/pages/GameDev.html"));
+  pages.push($.get("/pages/ThePrinceLostInTime.html"));
+  pages.push($.get("/pages/WorldDomination.html"));
   console.log("I exist");
   $.when
     .apply($, pages)
@@ -141,6 +143,8 @@ $(() => {
         ButterEmUpData,
         EnchantedForestData,
         GameDev,
+        ThePrinceLostInTime,
+        WorldDomination
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
@@ -155,6 +159,8 @@ $(() => {
         systemData["ButterEmUp"] = ButterEmUpData[0];
         systemData["EnchantedForest"] = EnchantedForestData[0];
         systemData["GameDev"] = GameDev[0];
+        systemData["ThePrinceLostInTime"] = ThePrinceLostInTime[0];
+        systemData["WorldDomination"] = WorldDomination[0];
       }
     );
 
