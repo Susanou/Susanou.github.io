@@ -144,7 +144,7 @@ $(() => {
         EnchantedForestData,
         GameDev,
         ThePrinceLostInTime,
-        WorldDomination
+        WorldDomination,
       ) => {
         systemData["about"] = aboutData[0];
         systemData["contact"] = contactData[0];
